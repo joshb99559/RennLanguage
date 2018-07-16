@@ -37,7 +37,7 @@ class Scanner {
       }
     
     Scanner(String source) {
-        this.source = source;
+        this.source = source;   
     }
     
     List<Token> scanTokens() {
@@ -71,6 +71,8 @@ class Scanner {
         case '/':
             if (match('/')) {
                 while (peek() != '\n' && !isAtEnd()) advance();
+            } else if (match('*')) {
+                comment();
             } else {
                 addToken(SLASH);
             }
@@ -97,6 +99,11 @@ class Scanner {
             }
             break;
         }
+    }
+    
+    private void comment() {
+        while (peek() != '*' && peekNext() != '/') advance(); 
+        advance(); advance();
     }
     
     private void identifier() {
