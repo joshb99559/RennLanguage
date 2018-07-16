@@ -1,0 +1,10 @@
+class MyClass {
+	numberOne = 12;
+	numberTwo = 24;
+	
+	//Divide Numbers
+	numberThree = numberTwo / numberOne;
+	
+	while (numberOne < numberTwo) {
+		numberOne = numberOne + 1;
+	}
